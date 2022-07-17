@@ -967,3 +967,51 @@ class Solution
         return ans;
     } 
 }
+
+*******************************************************************************************************************************
+
+//Equilibrium point
+
+public static int equilibriumPoint(long arr[], int n) {
+
+        // brute force
+        // int leftSum = 0;
+        // int rightSum = 0;
+        
+        // for (int i = 0; i < n; i++) {
+        //     leftSum = 0;
+        //     rightSum = 0;
+            
+        //     for (int j = 0; j < i; j++) {
+        //         leftSum += arr[j];
+        //     }
+            
+        //     for (int j = i+1; j < n; j++) {
+        //         rightSum += arr[j];
+        //     }
+            
+        //     if (leftSum == rightSum)
+        //         return i+1;
+        // }
+        
+        // return -1;
+        
+        int leftSum = 0;
+        int sum = 0;
+        
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+        }
+        
+        for (int i = 0; i < n; i++) {
+            sum -= arr[i];
+            
+            if (leftSum == sum)
+                return i+1;
+            else
+                leftSum += arr[i];
+        }
+        
+        return -1;
+        
+    }
