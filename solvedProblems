@@ -1015,3 +1015,103 @@ public static int equilibriumPoint(long arr[], int n) {
         return -1;
         
     }
+    
+    
+    ********************************************************************************************************
+    // Get min at pop
+    
+    class GetMin {
+    //Function to push all the elements into the stack.
+    public static Stack<Integer> _push(int arr[], int n) {
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        for (int item: arr) 
+            stack.push(item);
+        
+        
+        return stack;
+    }
+    
+    //Function to print minimum value in stack each time while popping.
+    static void _getMinAtPop(Stack<Integer> s) {
+        
+        // brute force
+        // int n = s.size();
+        
+        // int [] res = new int[n];
+        // int [] ans = new int[n];
+        
+        // for (int i = 0; i < n; i++) {
+        //     int num = s.pop();
+        //     res[i] = num;
+        // }
+        // ans[n-1] = res[n-1];
+        // int min = res[n-1];
+        
+        // for (int i = n-2; i >= 0; i--) {
+        //     if (res[i] > min)
+        //         res[i] = min;
+        //     else {
+        //         min = res[i];
+        //         res[i] = min;
+        //     }
+        // }
+        
+        // for (int item: res)
+        //     System.out.print(item + " ");
+        
+        int n = s.size();
+        int min = s.get(0);
+        
+        Stack<Integer> stack = new Stack<>();
+        stack.push(min);
+        
+        for (int i = 1; i < n; i++) {
+            if (s.get(i) < min)
+                min = s.get(i);
+                
+            stack.push(min);
+        }
+        
+        // for (int item: stack)
+        //     System.out.print(item + " ");
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print(stack.pop() + " ");
+        }
+    }
+}
+
+**********************************************************************************
+
+// Parenthesis Checker
+
+class Solution {
+    //Function to check if brackets are balanced or not.
+    static boolean ispar(String x) {
+        
+        int n = x.length();
+        Stack<Character> stack = new Stack<>();
+        
+        for (int i = 0; i < n; i++) {
+            char ch = x.charAt(i);
+            
+            if (ch == '(' || ch == '[' || ch == '{')
+                stack.push(ch);
+            else {
+                if (stack.isEmpty())
+                    return false;
+                    
+                if (stack.peek() == '(' && ch == ')' ||
+                    stack.peek() == '[' && ch == ']' ||
+                    stack.peek() == '{' && ch == '}')
+                        stack.pop();
+                else
+                    return false;
+            }
+        }
+        
+        return stack.isEmpty();
+    }
+}
