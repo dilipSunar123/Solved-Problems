@@ -1116,56 +1116,58 @@ class Solution {
     }
 }
 
+****************************************************************************************************************************
 
+// Check for Balanced Tree
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Solution {
-    static int minJumps(int[] arr) {
+class Tree {
+    //Function to check whether a binary tree is balanced or not.
+    boolean isBalanced(Node root) {
+	   
+	   // brute force
+	   //if (root == null)
+	   //    return true;
+	   
+	   //int leftH = findHeight(root.left);
+	   //int rightH = findHeight(root.right);
+	   
+	   //if (Math.abs(leftH - rightH) > 1)
+	   //    return false;
+	       
+	   //boolean left = isBalanced(root.left);
+	   //boolean right = isBalanced(root.right);
+	   
+	   //if (!left || !right) return false;
+	   
+	   //return true;
+	   
+	   // optimal
+	   return findHeight(root) != -1;
+	   
+    }
+    
+    // brute force
+    // int findHeight (Node root) {
+    //     if (root == null)
+    //         return 0;
         
-        int n = arr.length;
-        int temp = n;
-        int count = 0;
+    //     return Math.max(findHeight(root.left), findHeight(root.right)) + 1;
+    // }
+    
+    // optimal
+    int findHeight(Node root) {
+        if (root == null) return 0;
         
-        for (int i = 0; i < n; i++) {
-            if (arr[i] >= temp)
-                return count;
-            else {
-                temp -= arr[i];
-                count++;
-            }
-        }
-        return -1;
+        int leftH = findHeight(root.left);
+        if (leftH == -1) return -1;
+        
+        int rightH = findHeight(root.right);
+        if (rightH == -1) return -1;
+        
+        if (Math.abs(leftH - rightH) > 1)
+            return -1;
+            
+        return Math.max(leftH, rightH) + 1;
     }
 }
+
