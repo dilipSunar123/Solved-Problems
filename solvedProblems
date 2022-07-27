@@ -1187,3 +1187,30 @@ class Tree {
     }
 }
 
+
+***************************************************************************************************
+
+// Union of 2 arrays
+
+ public static int doUnion(int a[], int n, int b[], int m)  {
+        
+        brute force
+        if (n == 0 && m == 0)
+            return 0;
+        if (n == 0 && m != 0)
+            return m;
+        if (m == 0 && n != 0)
+            return n;
+            
+        HashSet<Integer> set = new HashSet<>();
+        
+        for (int i = 0; i < n; i++) {
+            set.add(a[i]);
+        }
+        
+        for (int i = 0; i < m; i++) {
+            set.add(b[i]);
+        }
+        
+        return set.size();
+}
