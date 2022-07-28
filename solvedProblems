@@ -1214,3 +1214,41 @@ class Tree {
         
         return set.size();
 }
+
+****************************************************************************************************
+
+// Rotate a LinkedList (Left Shift)
+https://practice.geeksforgeeks.org/problems/rotate-a-linked-list/1
+
+public Node rotate(Node head, int k) {
+        
+        Node curr = head;
+        int count = 1;
+        
+        while (curr.next != null) {
+            curr = curr.next;
+            count++;
+        }
+        
+        // if length is same as rotation then return head
+        if (count == k)
+            return head;
+            
+        // otherwise convert to circular list 
+        curr.next = head;
+        
+        int indexCount = 0;
+        Node temp = head;
+        
+        while (indexCount != k-1) {
+            temp = temp.next;
+            
+            indexCount++;
+        }
+        
+        Node newHead = temp.next;
+        temp.next = null;
+        
+        
+        return newHead;
+}
