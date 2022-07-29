@@ -1252,3 +1252,36 @@ public Node rotate(Node head, int k) {
         
         return newHead;
 }
+
+// Largest subarray with 0 sum
+
+class GfG {
+    int maxLen(int arr[], int n) {
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        int preSum = 0;
+        int maxLen = 0;
+        int i = -1;
+        
+        map.put(0, i);
+        
+        i = 0;
+        
+        while (i < n) {
+            preSum += arr[i];
+            
+            if (!map.containsKey(preSum)) {
+                map.put(preSum, i);
+            } else {
+                int len = i-map.get(preSum);
+                
+                if (len > maxLen)
+                    maxLen = len;
+            }
+            
+            i++;
+        }
+        return maxLen;
+    }
+}
