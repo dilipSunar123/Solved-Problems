@@ -1285,3 +1285,49 @@ class GfG {
         return maxLen;
     }
 }
+
+// Diameter of a Binary Tree
+
+class Solution {
+    // Function to return the diameter of a Binary Tree.
+    int ans = 0;
+    int diameter(Node root) {
+        
+        // brute force...
+        // if (root == null)
+        //     return 0;
+            
+        // int dl = diameter (root.left);
+        // int dr = diameter (root.right);
+        
+        // int curr = height (root.left) + height (root.right) + 1;
+        
+        // return Math.max (curr, Math.max(dl, dr));
+        
+        
+        
+        // optimal (same code as height with just one extra line)
+        
+        if (root == null)
+            return 0;
+            
+        int lh = diameter (root.left);
+        int rh = diameter (root.right);
+        
+        ans = Math.max (ans, lh + rh);
+        
+        return Math.max (lh, rh);
+        
+        
+        
+        
+    }
+    
+    // brute force...
+    // int height (Node root) {
+    //     if (root == null)
+    //         return 0;
+            
+    //     return Math.max (height (root.left), height(root.right)) + 1;
+    // }
+}
