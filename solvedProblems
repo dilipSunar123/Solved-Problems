@@ -1337,6 +1337,8 @@ class Solution {
 // Easy String (gfg)
 https://practice.geeksforgeeks.org/problems/easy-string2212/0?page=1
 
+// Works fine with String too (instead of StringBuilder) but TLE Exception
+
 class Solution  { 
     String transform(String s) {
         
