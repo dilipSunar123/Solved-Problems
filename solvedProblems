@@ -1331,3 +1331,32 @@ class Solution {
     //     return Math.max (height (root.left), height(root.right)) + 1;
     // }
 }
+
+*****************************************************************************************
+
+// Easy String (gfg)
+https://practice.geeksforgeeks.org/problems/easy-string2212/0?page=1
+
+class Solution  { 
+    String transform(String s) {
+        
+        s = s.toLowerCase() + " ";
+        
+        StringBuilder builder = new StringBuilder();
+        
+        int c = 1;
+        
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1))
+                c++;
+            else {
+                builder.append (c + String.valueOf(s.charAt(i-1)));
+                c = 1;
+            }
+        }
+        return String.valueOf(builder);
+        
+    }
+} 
+
+
