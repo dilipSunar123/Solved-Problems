@@ -1443,3 +1443,35 @@ class Solution{
     }
 }
 
+*******************************************************************************************
+
+// Rotate Array (Left Shift)
+
+class Solution {
+    //Function to rotate an array by d elements in counter-clockwise direction. 
+    static void rotateArr(int arr[], int d, int n) {
+        
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        while (d > n) {
+            d -= n;
+        }
+        
+        for (int i = d-1; i >= 0; i--) {
+            int num = arr[i];
+            
+            stack.push(num);
+        }
+        
+        for (int i = n-1; i >= d; i--) {
+            int num = arr[i];
+            
+            stack.push(num);
+        }
+        
+        for (int i = 0; i < n; i++) {
+            arr[i] = stack.pop();
+        }
+    }
+}
