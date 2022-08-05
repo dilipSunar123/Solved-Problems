@@ -1446,6 +1446,7 @@ class Solution{
 *******************************************************************************************
 
 // Rotate Array (Left Shift)
+https://practice.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/0?page=1&category%5B%5D=Arrays&sortBy=submissions
 
 class Solution {
     //Function to rotate an array by d elements in counter-clockwise direction. 
