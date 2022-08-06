@@ -1476,3 +1476,48 @@ class Solution {
         }
     }
 }
+
+**********************************************************************************************************
+
+// Count the Reversals
+https://practice.geeksforgeeks.org/problems/count-the-reversals0401/0?page=1&category%5B%5D=Stack&sortBy=submissions
+
+class Sol {
+    int countRev (String S) {
+    
+        int n = S.length();
+        
+        if (n % 2 == 1)
+            return -1;
+            
+        Stack <Character> st = new Stack<Character>();
+        
+        for (int i = 0; i < n; i++) {
+            char c = S.charAt(i);
+            
+            if (c == '{')
+                st.push(c);
+            else {
+                if (!st.isEmpty() && st.peek() == '{')
+                    st.pop();
+                else
+                    st.push(c);
+            }
+        }
+        
+        int a = 0;
+        int b = 0;
+        
+        while (!st.isEmpty()) {
+            if(st.peek()=='{')
+                a++;
+            else
+                b++;
+                
+            st.pop();
+        }
+        int ans = (a+1) / 2 + (b+1) / 2;
+        
+        return ans;
+    }
+}
