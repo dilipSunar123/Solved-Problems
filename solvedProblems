@@ -1614,3 +1614,41 @@ class Sol {
         // return ans;
     }
 }
+
+*****************************************************************************************************************
+
+// Check if two arrays are equal or not
+https://practice.geeksforgeeks.org/problems/check-if-two-arrays-are-equal-or-not3847/1?page=1&category[]=Sorting&sortBy=submissions
+
+class Solution {
+    //Function to check if two arrays are equal or not.
+    public static boolean check(long A[], long B[], int N) {
+        
+        // either solve using the following code 
+        // or first sort the 2 arrays Arrays.sort()
+        // and compare...
+        
+        Map<Long, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < N; i++) {
+            if (map.containsKey(A[i]))
+                map.put(A[i], map.get(A[i]) + 1);
+            else
+                map.put(A[i], 1);
+        }
+        
+        for (int i = 0; i < N; i++) {
+            if (map.containsKey(B[i]))
+                map.put(B[i], map.get(B[i]) - 1);
+            else
+                return false;
+        }
+        
+        for (Map.Entry<Long, Integer> entry: map.entrySet()) {
+            if (entry.getValue() != 0)
+                return false;
+        }
+        
+        return true;   
+    }
+}
