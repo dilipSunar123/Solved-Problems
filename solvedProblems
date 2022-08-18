@@ -1787,3 +1787,57 @@ class Solution {
         return true;
     }
 }
+
+
+***********************************************************************************************************************
+
+// Count the Triplets
+
+https://practice.geeksforgeeks.org/problems/count-the-triplets4615/1?page=1&category[]=Sorting&sortBy=submissions
+
+class Solution {
+    int countTriplet(int arr[], int n) {
+        
+        // ArrayList<Integer> list = new ArrayList<>();
+        
+        // for (int item: arr)
+        //     list.add (item);
+        
+        // int count = 0;    
+        
+        // for (int i = 0; i < n-1; i++) {
+        //     for (int j = i+1; j < n; j++) {
+        //         if (list.contains(arr[i] + arr[j]))
+        //             count++;
+        //     }
+        // }
+        // return count;
+        
+        
+        Arrays.sort(arr);
+        int count = 0;
+        
+        for (int i = 0; i < n; i++) {
+            int low = 0;
+            int high = n - 1;
+            
+            while (low < high) {
+                if (low == arr[i])
+                    low++;
+                if (high == arr[i])
+                    high--;
+                if (arr[low] + arr[high] == arr[i]) {
+                    count++;
+                    low++;
+                    high--;
+                } else if (arr[low] + arr[high] < arr[i])
+                    low++;
+                else
+                    high--;
+            }
+        }
+        
+        return count;
+        
+    }
+}
